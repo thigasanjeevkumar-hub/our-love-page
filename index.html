@@ -1,187 +1,233 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For my love 🤎✨</title>
+<meta charset="UTF-8">
+<title>For my love 🤎✨</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #fbc2eb, #a6c1ee);
-      text-align: center;
-      color: white;
-      overflow-x: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(to bottom, #fbc2eb, #a6c1ee);
+  text-align: center;
+  color: white;
+  overflow-x: hidden;
+}
 
-    section {
-      min-height: 100vh;
-      padding: 80px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+section {
+  min-height: 100vh;
+  padding: 70px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-    h1, h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
 
-    p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      line-height: 1.8;
-    }
+h2 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+}
 
-    button {
-      padding: 12px 30px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      margin: 10px;
-    }
+p {
+  font-size: 1.15rem;
+  max-width: 720px;
+  line-height: 1.9;
+  opacity: 0.95;
+}
 
-    .yes {
-      background-color: #ff4b5c;
-      color: white;
-    }
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin: 25px 0;
+}
 
-    .no {
-      background-color: white;
-      color: #ff4b5c;
-      position: absolute;
-    }
+.gallery img {
+  width: 230px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 18px 35px rgba(0,0,0,0.35);
+}
 
-    .heart {
-      position: fixed;
-      bottom: 0;
-      font-size: 22px;
-      animation: floatUp 4s linear infinite;
-    }
+button {
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 12px;
+}
 
-    @keyframes floatUp {
-      from { transform: translateY(0); }
-      to { transform: translateY(-100vh); }
-    }
-  </style>
+.yes {
+  background: #ff4b5c;
+  color: white;
+  box-shadow: 0 10px 25px rgba(255,75,92,0.6);
+}
+
+#noBtn {
+  background: rgba(255,255,255,0.25);
+  color: white;
+  position: fixed;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(5px);
+}
+
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 22px;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+.fade {
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
 </head>
 
 <body>
-  <audio id="bgMusic" loop>
-  <source src="song.mp3" type="audio/mpeg">
-  </audio>
 
-<section>
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<section class="fade">
   <h1>Hey naina 🤎✨</h1>
   <p>
-    I made this little website just for you.  
-    Because sometimes words deserve a special place.  
-    And you deserve something special from me 🙂‍↔️.
+    I made this little website just for you.<br>
+    Because sometimes words deserve a special place.<br>
+    And you deserve something special from me 🙂‍↔️
   </p>
 </section>
 
-<section>
+<section class="fade">
   <h2>Our Story 💕</h2>
+
+  <div class="gallery">
+    <img src="shalini 1.JPG">
+    <img src="shalini 2.JPG">
+    <img src="shalini 3.JPG">
+    <img src="shalini 4.jpg">
+  </div>
+
   <p>
-    <img src="shalini 1.JPG" style="width:240px;height:360px;object-fit:cover;border-radius:20px;">
-    <img src="shalini 2.JPG" style="width:240px;height:360px;object-fit:cover;border-radius:20px;">
-    <img src="shalini 3.JPG" style="width:240px;height:360px;object-fit:cover;border-radius:20px;">
-    <img src="shalini 4.jpg" style="width:260px;border-radius:20px;margin-top:20px;">
-    From simple talks  
-    to endless laughs and appo appo fight 🙂‍↔️  
-    from small moments  
-    to big feelings  
+    From simple talks<br>
+    to endless laughs and appo appo fight 🙂‍↔️<br>
+    from small moments<br>
+    to big feelings<br>
     somehow my heart found its home in you.
   </p>
 </section>
 
-<section>
+<section class="fade">
   <h2>Why I Love You ✨</h2>
   <p>
-    I love your Eye.  
-    I love your voice. 
-    I love everything of you naana 🥹🤎✨
-    I love the way you make everything feel lighter.  
+    I love your eyes.<br>
+    I love your voice.<br>
+    I love everything of you naana 🥹🤎✨<br>
+    You make everything feel lighter.<br>
     You are my favorite thought every single day.
   </p>
 </section>
 
-<section>
+<section class="fade">
   <h2>A Small Confession 😌</h2>
   <p>
-    I may tease you.  
-    I may act silly.  
-    But behind all of that  
+    I may tease you.<br>
+    I may act silly.<br>
+    But behind all of that<br>
     there is a heart that only chooses you.
   </p>
 </section>
 
-<section>
+<section class="fade">
   <h2>One Important Question 🤔✨</h2>
-  <p>Will you be my Valentine?😁</p>
+  <p>Will you be my Valentine? 😁</p>
 
   <button class="yes" onclick="yesClicked()">YES 💖</button>
-  <button id="noBtn" onclick="moveNo()"
-style="position:fixed;bottom:120px;left:50%;transform:translateX(-50%);
-padding:12px 20px;border:none;border-radius:25px;background:#555;color:white;font-size:16px;">
-No 😅
-  </button>
+  <button id="noBtn" onclick="moveNo()">No 😅</button>
 </section>
 
 <script>
-  function moveNo() {
-    const noBtn = document.querySelector('.no');
-    noBtn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-    noBtn.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-  }
-
-  function yesClicked() {
-    document.body.innerHTML = `
-      <section>
-        <h1>I Love You da yen chella kuttyyyyyyyy 🥹💕</h1>
-        <p>
-          Thank you for choosing me.  
-          Today, tomorrow, and always  
-          I choose you.
-          <br><br>
-          Forever yours,<br>
-          idiot 😁❤️
-        </p>
-      </section>
-    `;
-
-    for (let i = 0; i < 50; i++) {
-      let heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerHTML = '🩵🩷';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      document.body.appendChild(heart);
-    }
-  }
-</script>
-  <script>
 document.addEventListener("click", function () {
   document.getElementById("bgMusic").play();
 }, { once: true });
-  </script>
-  <script>
+
 function moveNo() {
   const btn = document.getElementById("noBtn");
-
   const maxX = window.innerWidth - btn.offsetWidth - 20;
   const maxY = window.innerHeight - btn.offsetHeight - 20;
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-
-  btn.style.left = x + "px";
-  btn.style.top = y + "px";
+  btn.style.left = Math.random() * maxX + "px";
+  btn.style.top = Math.random() * maxY + "px";
 }
-  </script>
+
+function yesClicked() {
+  document.body.innerHTML = `
+    <section class="fade">
+      <h1>I Love You da yen chella kuttyyyyyyyy 🥹💕</h1>
+      <p>
+        Thank you for choosing me.<br>
+        Today, tomorrow, and always<br>
+        I choose you.<br><br>
+        Forever yours,<br>
+        idiot 😁❤️
+      </p>
+    </section>
+  `;
+
+  for (let i = 0; i < 60; i++) {
+    createHeart();
+  }
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = Math.random() > 0.5 ? "🤎" : "✨";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+</script>
 
 </body>
 </html>
