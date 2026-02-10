@@ -86,9 +86,9 @@
 <section>
   <h2>Our Story 💕</h2>
   <p>
-    <img src="shalini 1.jpg" style="width:240px;height:360px;object-fit:cover;border-radius:20px;">
-    <img src="shalini 2.jpg" style="width:240px;height:360px;object-fit:cover;border-radius:20px;">
-    <img src="shalini 3.jpg" style="width:240px;height:360px;object-fit:cover;border-radius:20px;">
+    <img src="shalini 1.JPG" style="width:240px;height:360px;object-fit:cover;border-radius:20px;">
+    <img src="shalini 2.JPG" style="width:240px;height:360px;object-fit:cover;border-radius:20px;">
+    <img src="shalini 3.JPG" style="width:240px;height:360px;object-fit:cover;border-radius:20px;">
     <img src="shalini 4.jpg" style="width:260px;border-radius:20px;margin-top:20px;">
     From simple talks  
     to endless laughs and appo appo fight 🙂‍↔️  
@@ -125,7 +125,8 @@
 
   <button class="yes" onclick="yesClicked()">YES 💖</button>
   <button id="noBtn" onclick="moveNo()"
-style="position:fixed;padding:12px 20px;border:none;border-radius:25px;background:#555;color:white;font-size:16px;">
+style="position:fixed;bottom:120px;left:50%;transform:translateX(-50%);
+padding:12px 20px;border:none;border-radius:25px;background:#555;color:white;font-size:16px;">
 No 😅
   </button>
 </section>
@@ -162,6 +163,25 @@ No 😅
     }
   }
 </script>
+  <script>
+document.addEventListener("click", function () {
+  document.getElementById("bgMusic").play();
+}, { once: true });
+  </script>
+  <script>
+function moveNo() {
+  const btn = document.getElementById("noBtn");
+
+  const maxX = window.innerWidth - btn.offsetWidth - 20;
+  const maxY = window.innerHeight - btn.offsetHeight - 20;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+}
+  </script>
 
 </body>
 </html>
