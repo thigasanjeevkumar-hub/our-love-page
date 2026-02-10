@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Shalini ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      text-align: center;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1, h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      line-height: 1.8;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .yes {
+      background-color: #ff4b5c;
+      color: white;
+    }
+
+    .no {
+      background-color: white;
+      color: #ff4b5c;
+      position: absolute;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: 0;
+      font-size: 22px;
+      animation: floatUp 4s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100vh); }
+    }
+  </style>
+</head>
+
+<body>
+
+<section>
+  <h1>Hey Shalini ❤️</h1>
+  <p>
+    I made this little website just for you.  
+    Because sometimes words deserve a special place.  
+    And you deserve something special from me.
+  </p>
+</section>
+
+<section>
+  <h2>Our Story 💕</h2>
+  <p>
+    From simple talks  
+    to endless laughs  
+    from small moments  
+    to big feelings  
+    somehow my heart found its home in you.
+  </p>
+</section>
+
+<section>
+  <h2>Why I Love You ✨</h2>
+  <p>
+    I love your smile.  
+    I love your voice.  
+    I love the way you make everything feel lighter.  
+    You are my favorite thought every single day.
+  </p>
+</section>
+
+<section>
+  <h2>A Small Confession 😌</h2>
+  <p>
+    I may tease you.  
+    I may act silly.  
+    But behind all of that  
+    there is a heart that only chooses you.
+  </p>
+</section>
+
+<section>
+  <h2>One Important Question ❤️</h2>
+  <p>Will you be my Valentine?</p>
+
+  <button class="yes" onclick="yesClicked()">YES 💖</button>
+  <button class="no" onmouseover="moveNo()">NO 🙈</button>
+</section>
+
+<script>
+  function moveNo() {
+    const noBtn = document.querySelector('.no');
+    noBtn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+    noBtn.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+  }
+
+  function yesClicked() {
+    document.body.innerHTML = `
+      <section>
+        <h1>I Love You Shalini 💕</h1>
+        <p>
+          Thank you for choosing me.  
+          Today, tomorrow, and always  
+          I choose you.
+          <br><br>
+          Forever yours,<br>
+          Sanjeev Kumar ❤️
+        </p>
+      </section>
+    `;
+
+    for (let i = 0; i < 50; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(heart);
+    }
+  }
+</script>
+
+</body>
+</html>
