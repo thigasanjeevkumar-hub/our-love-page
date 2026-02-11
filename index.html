@@ -3,83 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Shalini ❤️</title>
+<title>Our Story ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 scroll-behavior:smooth;
-cursor:none;
 }
 
 body{
-background: radial-gradient(circle at top, #3a003a, #120012, #000000);
-color:white;
 font-family:'Poppins',sans-serif;
+color:white;
 overflow-x:hidden;
 }
 
-/* Custom Romantic Cursor */
-.cursor{
+/* Background Image */
+.background{
 position:fixed;
-width:15px;
-height:15px;
-border-radius:50%;
-background:#ff4da6;
-pointer-events:none;
-box-shadow:0 0 20px #ff4da6, 0 0 40px #ff4da6;
-z-index:2000;
-transform:translate(-50%,-50%);
+width:100%;
+height:100%;
+background:url("photo.jpg") center/cover no-repeat;
+z-index:-2;
 }
 
-/* Floating particles */
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(30,0,30,0.85));
+z-index:-1;
+}
+
+/* Floating romantic glow */
 .particle{
 position:fixed;
-width:3px;
-height:3px;
+width:4px;
+height:4px;
 background:#ff99cc;
 border-radius:50%;
 opacity:0.6;
-animation:float 10s linear infinite;
+animation:float 12s linear infinite;
 }
 
 @keyframes float{
-from{transform:translateY(100vh);opacity:0;}
-to{transform:translateY(-10vh);opacity:1;}
-}
-
-/* Intro */
-#intro{
-position:fixed;
-width:100%;
-height:100vh;
-background: radial-gradient(circle at center,#4b004b,#000);
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:1000;
-transition:1.5s ease;
-}
-
-#intro h1{
-font-family:'Playfair Display',serif;
-font-size:3.2rem;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{text-shadow:0 0 10px #ff4da6;}
-to{text-shadow:0 0 40px #ff4da6;}
-}
-
-.hidden{
-opacity:0;
-visibility:hidden;
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
 }
 
 /* Sections */
@@ -88,7 +60,7 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:40px 20px;
+padding:60px 20px;
 text-align:center;
 opacity:0;
 transform:translateY(60px);
@@ -102,39 +74,46 @@ transform:translateY(0);
 
 .card{
 background:rgba(255,255,255,0.08);
-backdrop-filter:blur(25px);
+backdrop-filter:blur(20px);
 padding:50px 30px;
-border-radius:35px;
-max-width:850px;
+border-radius:30px;
+max-width:900px;
 width:95%;
-box-shadow:0 0 80px rgba(255,77,166,0.4);
+box-shadow:0 0 60px rgba(255,105,180,0.4);
 }
 
-h2{
+h1,h2{
 font-family:'Playfair Display',serif;
-font-size:2.3rem;
 margin-bottom:20px;
 }
 
+h1{
+font-size:3rem;
+}
+
+h2{
+font-size:2rem;
+}
+
 p{
-font-size:1.15rem;
+font-size:1.2rem;
 line-height:1.9;
 }
 
 button{
+margin-top:25px;
 padding:15px 45px;
 border:none;
 border-radius:50px;
 font-size:1rem;
 cursor:pointer;
-margin:15px;
 transition:0.3s;
 }
 
 .yes{
 background:linear-gradient(45deg,#ff4da6,#ff0066);
 color:white;
-box-shadow:0 0 30px #ff4da6;
+box-shadow:0 0 25px #ff4da6;
 }
 
 .yes:hover{
@@ -151,12 +130,8 @@ position:relative;
 
 <body>
 
-<div class="cursor" id="cursor"></div>
-
-<div id="intro">
-<h1>Shalini ❤️</h1>
-<p>Tap to enter our world</p>
-</div>
+<div class="background"></div>
+<div class="overlay"></div>
 
 <audio id="music" loop>
 <source src="song.mp3" type="audio/mpeg">
@@ -164,43 +139,35 @@ position:relative;
 
 <script>
 
-/* Romantic cursor */
-const cursor=document.getElementById("cursor");
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
-});
-
-/* Particles */
-for(let i=0;i<80;i++){
-let p=document.createElement("div");
-p.className="particle";
-p.style.left=Math.random()*100+"vw";
-p.style.animationDuration=(6+Math.random()*6)+"s";
-document.body.appendChild(p);
-}
-
-/* Intro click */
+/* Start music on first tap */
 document.addEventListener("click",function(){
-document.getElementById("intro").classList.add("hidden");
 document.getElementById("music").play();
 },{once:true});
 
-/* Scroll reveal */
+/* Floating particles */
+for(let i=0;i<100;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(8+Math.random()*6)+"s";
+document.body.appendChild(p);
+}
+
+/* Scroll animation */
 window.addEventListener("scroll",()=>{
 document.querySelectorAll("section").forEach(sec=>{
-if(sec.getBoundingClientRect().top<window.innerHeight-100){
+if(sec.getBoundingClientRect().top < window.innerHeight-100){
 sec.classList.add("show");
 }
 });
 });
 
-/* Move no */
+/* Move No button */
 function moveNo(){
 let btn=document.getElementById("no");
 btn.style.position="absolute";
 btn.style.left=Math.random()*70+"%";
-btn.style.top=Math.random()*50+"%";
+btn.style.top=Math.random()*60+"%";
 }
 
 /* Yes redirect */
@@ -211,19 +178,56 @@ window.location.href="yes.html";
 
 <section>
 <div class="card">
-<h2>You Changed My World</h2>
+<h1>Shalini ❤️</h1>
 <p>
-Before you, love was just a word.  
-After you, it became a feeling I breathe every day.  
-You are my calm, my chaos, my forever.
+Every love story begins somewhere.  
+Ours began with a simple moment that changed everything.  
+From that day, my world slowly started revolving around you.
 </p>
 </div>
 </section>
 
 <section>
 <div class="card">
-<h2>One Question From My Heart</h2>
-<p>Will you be my Valentine?</p>
+<h2>The Way You Smile</h2>
+<p>
+Your smile became my favorite sunrise.  
+Your voice became my comfort after long days.  
+Even silence feels beautiful when I am with you.
+</p>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>Growing Together</h2>
+<p>
+We laughed.  
+We argued.  
+We understood each other deeper.  
+And through every phase, I realized something powerful.  
+I do not just like you.  
+I choose you.
+</p>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>The Future I See</h2>
+<p>
+Late night talks.  
+Holding hands without reason.  
+Building dreams together.  
+Growing old with stories only we understand.
+</p>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>One Question ❤️</h2>
+<p>Will you be mine, today and always?</p>
 <button class="yes" onclick="goYes()">YES ❤️</button>
 <button id="no" onclick="moveNo()">No 😅</button>
 </div>
