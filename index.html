@@ -1,201 +1,236 @@
-
-
-  
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shalini ❤️ Sanjeev</title>
+<title>For Shalini ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
-body {
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
+body{
+background: radial-gradient(circle at top, #1a001f, #000);
+color:white;
+font-family:'Poppins', sans-serif;
+overflow-x:hidden;
 }
 
-.container {
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(20px);
-  border-radius: 25px;
-  padding: 25px;
-  max-width: 420px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+section{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+text-align:center;
+position:relative;
 }
 
-h1 {
-  font-family: 'Pacifico', cursive;
-  font-size: 2.3rem;
-  color: #fff;
-  margin-bottom: 10px;
+.card{
+background: rgba(255,255,255,0.07);
+backdrop-filter: blur(20px);
+padding:50px 30px;
+border-radius:25px;
+max-width:800px;
+width:95%;
+box-shadow:0 30px 80px rgba(0,0,0,0.6);
 }
 
-.subtitle {
-  color: #fff;
-  font-size: 1rem;
-  margin-bottom: 20px;
+h1{
+font-family:'Playfair Display', serif;
+font-size:3rem;
+margin-bottom:20px;
+letter-spacing:2px;
 }
 
-.photo {
-  width: 100%;
-  height: 420px;
-  border-radius: 20px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+h2{
+font-family:'Playfair Display', serif;
+font-size:2.2rem;
+margin-bottom:20px;
 }
 
-.photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+p{
+font-size:1.1rem;
+line-height:1.9;
+opacity:0.9;
 }
 
-.message {
-  color: #fff;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
+.hero{
+background: radial-gradient(circle at center, #300030, #000);
 }
 
-.buttons {
-  position: relative;
-  height: 80px;
+#name{
+font-size:4rem;
+opacity:0;
+transform:scale(0.5);
+transition:2s ease;
 }
 
-button {
-  border: none;
-  padding: 14px 22px;
-  font-size: 1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+#name.show{
+opacity:1;
+transform:scale(1);
 }
 
-#yes {
-  background: linear-gradient(45deg, #ff4e50, #f9d423);
-  color: #fff;
-  font-weight: bold;
+.gallery{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+margin-top:30px;
 }
 
-#no {
-  background: #fff;
-  color: #ff4e50;
-  position: absolute;
+.gallery img{
+width:220px;
+height:320px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
+transition:0.5s;
 }
 
-button:hover {
-  transform: scale(1.1);
+.gallery img:hover{
+transform:scale(1.1);
 }
 
-.final {
-  display: none;
-  margin-top: 20px;
-  color: #fff;
-  font-size: 1.2rem;
+button{
+padding:15px 40px;
+border:none;
+border-radius:40px;
+font-size:1rem;
+cursor:pointer;
+margin:15px;
+transition:0.3s;
 }
 
-.hearts span {
-  position: fixed;
-  bottom: -20px;
-  font-size: 24px;
-  animation: floatUp 6s linear infinite;
+.yes{
+background:#ff0055;
+color:white;
+box-shadow:0 0 25px #ff0055;
 }
 
-@keyframes floatUp {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+.yes:hover{
+transform:scale(1.1);
+}
+
+#no{
+background:white;
+color:#ff0055;
+position:relative;
+}
+
+.final-message{
+display:none;
+margin-top:30px;
+font-size:1.4rem;
+}
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:24px;
+animation:float 6s linear forwards;
+}
+
+@keyframes float{
+from{transform:translateY(0);opacity:1;}
+to{transform:translateY(-110vh);opacity:0;}
 }
 </style>
 </head>
 
-<body onclick="playMusic()">
+<body>
 
 <audio id="music" loop>
-  <source src="song.mp3" type="audio/mpeg">
+<source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<div class="container">
-  <h1>Shalini ❤️ Sanjeev</h1>
-  <div class="subtitle">A little question from my heart</div>
+<section class="hero">
+<div>
+<h1 id="name">Shalini ❤️</h1>
+<p style="margin-top:20px;font-size:1.2rem;">This story begins with you…</p>
+</div>
+</section>
 
-  <div class="photo">
-    <img src="photo.jpg" alt="Our Love">
-  </div>
+<section>
+<div class="card">
+<h2>The Day Everything Changed</h2>
+<p>
+I did not know that one conversation could change my world.  
+But you walked in… and suddenly my ordinary life felt magical.  
+Your smile became my peace.  
+Your laugh became my favorite sound.
+</p>
+</div>
+</section>
 
-  <div class="message">
-    From the moment you entered my life, everything felt lighter, happier and magical.  
-    You are my calm, my madness, my forever favorite person 💕  
-    So tell me honestly…
-  </div>
+<section>
+<div class="card">
+<h2>Our Beautiful Moments</h2>
+<div class="gallery">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+</div>
+</div>
+</section>
 
-  <div class="message" style="font-size:1.2rem;font-weight:600;">
-    Will you be my Valentine? 💖
-  </div>
+<section>
+<div class="card">
+<h2>One Honest Question</h2>
+<p style="margin-bottom:20px;">
+So tell me…  
+Will you be mine this Valentine’s Day?
+</p>
 
-  <div class="buttons">
-    <button id="yes" onclick="yesClick()">YES 😍</button>
-    <button id="no" onmouseover="moveNo()">NO 🙈</button>
-  </div>
+<button class="yes" onclick="sayYes()">YES ❤️</button>
+<button id="no" onclick="moveNo()">No 😅</button>
 
-  <div class="final" id="final">
-    Yayyyy 🥰  
-    I knew it 💕  
-    You are stuck with me forever 😘  
-    Happy Valentine’s Day my love ❤️
-  </div>
+<div class="final-message" id="final">
+You just made me the happiest person alive.  
+Forever yours,  
+Sanjeev ❤️
 </div>
 
-<div class="hearts" id="hearts"></div>
+</div>
+</section>
 
 <script>
-let musicPlayed = false;
+document.addEventListener("click", function(){
+document.getElementById("music").play();
+},{once:true});
 
-function playMusic() {
-  if (!musicPlayed) {
-    document.getElementById("music").play();
-    musicPlayed = true;
-  }
+setTimeout(()=>{
+document.getElementById("name").classList.add("show");
+},500);
+
+function moveNo(){
+let btn=document.getElementById("no");
+btn.style.position="absolute";
+btn.style.left=Math.random()*70+"%";
+btn.style.top=Math.random()*50+"%";
 }
 
-function moveNo() {
-  const no = document.getElementById("no");
-  const x = Math.random() * 250;
-  const y = Math.random() * 40;
-  no.style.left = x + "px";
-  no.style.top = y + "px";
+function sayYes(){
+document.getElementById("final").style.display="block";
+for(let i=0;i<40;i++){
+createHeart();
+}
 }
 
-function yesClick() {
-  document.getElementById("final").style.display = "block";
-  createHearts();
-}
-
-function createHearts() {
-  const hearts = document.getElementById("hearts");
-  for (let i = 0; i < 30; i++) {
-    const span = document.createElement("span");
-    span.innerHTML = "❤️";
-    span.style.left = Math.random() * 100 + "vw";
-    span.style.animationDuration = (3 + Math.random() * 3) + "s";
-    hearts.appendChild(span);
-    setTimeout(() => span.remove(), 6000);
-  }
+function createHeart(){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
 }
 </script>
 
