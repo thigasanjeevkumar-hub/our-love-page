@@ -1,120 +1,132 @@
 
+
   <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For my love 🤎✨</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shalini 🤎 Sanjeev</title>
 
 <style>
 body {
   margin: 0;
-  padding: 0;
-  font-family: "Poppins", Arial, sans-serif;
-  background: linear-gradient(to bottom, #fbc2eb, #a6c1ee);
-  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
   color: white;
+  text-align: center;
   overflow-x: hidden;
+  background: linear-gradient(-45deg, #ff758c, #ff7eb3, #fad0c4, #a18cd1);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 section {
   min-height: 100vh;
-  padding: 70px 20px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(18px);
+  padding: 40px;
+  border-radius: 30px;
+  max-width: 750px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
 }
 
 h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   margin-bottom: 15px;
-  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 h2 {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   margin-bottom: 15px;
 }
 
 p {
-  font-size: 1.15rem;
-  max-width: 720px;
+  font-size: 1.1rem;
   line-height: 1.9;
-  opacity: 0.95;
 }
 
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 18px;
   justify-content: center;
-  margin: 25px 0;
+  margin-top: 25px;
 }
 
 .gallery img {
-  width: 230px;
-  height: 340px;
+  width: 210px;
+  height: 310px;
   object-fit: cover;
-  border-radius: 22px;
-  box-shadow: 0 18px 35px rgba(0,0,0,0.35);
+  border-radius: 20px;
+  box-shadow: 0 18px 35px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.08);
 }
 
 button {
-  padding: 14px 32px;
-  font-size: 1.1rem;
+  padding: 15px 35px;
+  border-radius: 35px;
   border: none;
-  border-radius: 30px;
+  font-size: 1rem;
   cursor: pointer;
   margin: 12px;
+  transition: 0.3s ease;
 }
 
 .yes {
-  background: #ff4b5c;
+  background: #ff4d6d;
   color: white;
-  box-shadow: 0 10px 25px rgba(255,75,92,0.6);
+  box-shadow: 0 10px 30px rgba(255,77,109,0.6);
+}
+
+.yes:hover {
+  transform: scale(1.1);
 }
 
 #noBtn {
-  background: rgba(255,255,255,0.25);
-  color: white;
+  background: white;
+  color: #ff4d6d;
   position: fixed;
   bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
-  backdrop-filter: blur(5px);
 }
 
-.heart {
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1.2s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sparkle {
   position: fixed;
-  bottom: -10px;
-  font-size: 22px;
+  font-size: 18px;
   animation: floatUp linear forwards;
 }
 
 @keyframes floatUp {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
-}
-
-.fade {
-  animation: fadeIn 1.5s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-110vh); opacity: 0; }
 }
 </style>
 </head>
@@ -122,111 +134,121 @@ button {
 <body>
 
 <audio id="bgMusic" loop>
-  <source src="song.mp3" type="audio/mpeg">
+<source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <section class="fade">
-  <h1>Hey naina 🤎✨</h1>
-  <p>
-    I made this little website just for you.<br>
-    Because sometimes words deserve a special place.<br>
-    And you deserve something special from me 🙂‍↔️
-  </p>
+<div class="card">
+<h1 id="typing"></h1>
+<p>
+From strangers…<br>
+To something magical…<br>
+To something I never want to lose.
+</p>
+</div>
 </section>
 
 <section class="fade">
-  <h2>Our Story 💕</h2>
-
-  <div class="gallery">
-    <img src="shalini 1.JPG">
-    <img src="shalini 2.JPG">
-    <img src="shalini 3.JPG">
-    <img src="shalini 4.jpg">
-  </div>
-
-  <p>
-    From simple talks<br>
-    to endless laughs and appo appo fight 🙂‍↔️<br>
-    from small moments<br>
-    to big feelings<br>
-    somehow my heart found its home in you.
-  </p>
+<div class="card">
+<h2>Our Beautiful Moments 🤎</h2>
+<div class="gallery">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+</div>
+</div>
 </section>
 
 <section class="fade">
-  <h2>Why I Love You ✨</h2>
-  <p>
-    I love your eyes.<br>
-    I love your voice.<br>
-    I love everything of you naana 🥹🤎✨<br>
-    You make everything feel lighter.<br>
-    You are my favorite thought every single day.
-  </p>
+<div class="card">
+<h2>Why You Are My Favorite Person ✨</h2>
+<p>
+Your smile feels like home.<br>
+Your voice calms my chaos.<br>
+Your presence makes everything lighter.<br>
+And somehow… you became my everything.
+</p>
+</div>
 </section>
 
 <section class="fade">
-  <h2>A Small Confession 😌</h2>
-  <p>
-    I may tease you.<br>
-    I may act silly.<br>
-    But behind all of that<br>
-    there is a heart that only chooses you.
-  </p>
-</section>
-
-<section class="fade">
-  <h2>One Important Question 🤔✨</h2>
-  <p>Will you be my Valentine? 😁</p>
-
-  <button class="yes" onclick="yesClicked()">YES 💖</button>
-  <button id="noBtn" onclick="moveNo()">No 😅</button>
+<div class="card">
+<h2>One Question From My Heart 😌</h2>
+<p>Will you be my Valentine?</p>
+<button class="yes" onclick="sayYes()">YES 💖</button>
+<button id="noBtn" onclick="moveNo()">No 😅</button>
+</div>
 </section>
 
 <script>
 document.addEventListener("click", function () {
-  document.getElementById("bgMusic").play();
+document.getElementById("bgMusic").play();
 }, { once: true });
 
+const text = "Shalini 🤎 Sanjeev";
+let i = 0;
+function typeWriter() {
+if (i < text.length) {
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter, 90);
+}
+}
+typeWriter();
+
 function moveNo() {
-  const btn = document.getElementById("noBtn");
-  const maxX = window.innerWidth - btn.offsetWidth - 20;
-  const maxY = window.innerHeight - btn.offsetHeight - 20;
-
-  btn.style.left = Math.random() * maxX + "px";
-  btn.style.top = Math.random() * maxY + "px";
+const btn = document.getElementById("noBtn");
+const maxX = window.innerWidth - btn.offsetWidth - 20;
+const maxY = window.innerHeight - btn.offsetHeight - 20;
+btn.style.left = Math.random() * maxX + "px";
+btn.style.top = Math.random() * maxY + "px";
 }
 
-function yesClicked() {
-  document.body.innerHTML = `
-    <section class="fade">
-      <h1>I Love You da yen chella kuttyyyyyyyy 🥹💕</h1>
-      <p>
-        Thank you for choosing me.<br>
-        Today, tomorrow, and always<br>
-        I choose you.<br><br>
-        Forever yours,<br>
-        idiot 😁❤️
-      </p>
-    </section>
-  `;
+function sayYes() {
+document.body.innerHTML = `
+<section style="display:flex;justify-content:center;align-items:center;height:100vh;">
+<div class="card">
+<h1>I Choose You 🤎</h1>
+<p>
+Today.<br>
+Tomorrow.<br>
+Always.<br><br>
+Forever yours,<br>
+Sanjeev ❤️
+</p>
+</div>
+</section>
+`;
 
-  for (let i = 0; i < 60; i++) {
-    createHeart();
-  }
+for (let i = 0; i < 70; i++) {
+createSparkle();
+}
 }
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = Math.random() > 0.5 ? "🤎" : "✨";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = 3 + Math.random() * 3 + "s";
-  document.body.appendChild(heart);
+function createSparkle() {
+const sparkle = document.createElement("div");
+sparkle.className = "sparkle";
+sparkle.innerHTML = Math.random() > 0.5 ? "🤎" : "✨";
+sparkle.style.left = Math.random() * 100 + "vw";
+sparkle.style.animationDuration = 3 + Math.random() * 3 + "s";
+document.body.appendChild(sparkle);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 6000);
+setTimeout(() => {
+sparkle.remove();
+}, 6000);
 }
+
+const faders = document.querySelectorAll('.fade');
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('show');
+}
+});
+}, { threshold: 0.3 });
+
+faders.forEach(f => observer.observe(f));
 </script>
 
 </body>
