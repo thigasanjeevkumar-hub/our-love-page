@@ -16,19 +16,18 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#000;
+background:black;
 color:white;
 font-family:'Poppins',sans-serif;
 overflow-x:hidden;
 }
 
-/* Intro Screen */
-
+/* Intro */
 #intro{
 position:fixed;
 width:100%;
 height:100vh;
-background:radial-gradient(circle at center,#200020,#000);
+background:radial-gradient(circle at center,#250025,#000);
 display:flex;
 justify-content:center;
 align-items:center;
@@ -41,11 +40,12 @@ transition:1.5s ease;
 font-family:'Playfair Display',serif;
 font-size:3rem;
 letter-spacing:3px;
+animation:glow 2s infinite alternate;
 }
 
-#intro p{
-margin-top:20px;
-opacity:0.8;
+@keyframes glow{
+from{text-shadow:0 0 10px #ff0055;}
+to{text-shadow:0 0 30px #ff0055;}
 }
 
 .hidden{
@@ -54,12 +54,12 @@ visibility:hidden;
 }
 
 /* Stars */
-
-.stars span{
+.star{
 position:fixed;
 width:2px;
 height:2px;
 background:white;
+opacity:0.8;
 animation:twinkle 3s infinite alternate;
 }
 
@@ -68,8 +68,22 @@ from{opacity:0.2;}
 to{opacity:1;}
 }
 
-/* Sections */
+/* Shooting Star */
+.shoot{
+position:fixed;
+width:2px;
+height:80px;
+background:linear-gradient(white,transparent);
+transform:rotate(45deg);
+animation:shoot 2s linear forwards;
+}
 
+@keyframes shoot{
+from{top:-100px;left:0;opacity:1;}
+to{top:100vh;left:100vw;opacity:0;}
+}
+
+/* Sections */
 section{
 min-height:100vh;
 display:flex;
@@ -78,7 +92,7 @@ align-items:center;
 padding:40px 20px;
 text-align:center;
 opacity:0;
-transform:translateY(50px);
+transform:translateY(60px);
 transition:1.5s ease;
 }
 
@@ -88,26 +102,19 @@ transform:translateY(0);
 }
 
 .card{
-background:rgba(255,255,255,0.07);
+background:rgba(255,255,255,0.08);
 backdrop-filter:blur(20px);
 padding:50px 30px;
 border-radius:30px;
 max-width:850px;
 width:95%;
-box-shadow:0 0 60px rgba(255,0,100,0.3);
-}
-
-h1,h2{
-font-family:'Playfair Display',serif;
-margin-bottom:20px;
-}
-
-h1{
-font-size:3.5rem;
+box-shadow:0 0 60px rgba(255,0,90,0.3);
 }
 
 h2{
+font-family:'Playfair Display',serif;
 font-size:2.2rem;
+margin-bottom:20px;
 }
 
 p{
@@ -115,25 +122,10 @@ font-size:1.1rem;
 line-height:1.9;
 }
 
-.gallery{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-justify-content:center;
-margin-top:25px;
-}
-
-.gallery img{
-width:220px;
-height:320px;
-object-fit:cover;
-border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.6);
-transition:0.5s;
-}
-
-.gallery img:hover{
-transform:scale(1.1);
+.countdown{
+margin-top:20px;
+font-size:1.2rem;
+color:#ff4d88;
 }
 
 button{
@@ -168,75 +160,49 @@ position:relative;
 
 <div id="intro">
 <h1>Shalini ❤️</h1>
-<p>Tap anywhere to begin our story</p>
+<p>Tap to enter our universe</p>
 </div>
 
 <audio id="music" loop>
 <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<div class="stars" id="stars"></div>
-
-<section>
-<div class="card">
-<h2>The Moment You Entered</h2>
-<p>
-You did not just enter my life.  
-You changed its rhythm.  
-Every ordinary day turned extraordinary because of you.
-</p>
-</div>
-</section>
-
-<section>
-<div class="card">
-<h2>Our Memories</h2>
-<div class="gallery">
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
-</div>
-</div>
-</section>
-
-<section>
-<div class="card">
-<h2>My Question</h2>
-<p>Will you be my Valentine?</p>
-<button class="yes" onclick="goYes()">YES ❤️</button>
-<button id="no" onclick="moveNo()">No 😅</button>
-</div>
-</section>
-
 <script>
 
 /* Stars */
 for(let i=0;i<150;i++){
-let star=document.createElement("span");
+let star=document.createElement("div");
+star.className="star";
 star.style.top=Math.random()*100+"vh";
 star.style.left=Math.random()*100+"vw";
 star.style.animationDuration=(2+Math.random()*3)+"s";
-document.getElementById("stars").appendChild(star);
+document.body.appendChild(star);
 }
 
-/* Intro Click */
+/* Shooting star every few seconds */
+setInterval(()=>{
+let shoot=document.createElement("div");
+shoot.className="shoot";
+document.body.appendChild(shoot);
+setTimeout(()=>shoot.remove(),2000);
+},4000);
+
+/* Intro click */
 document.addEventListener("click",function(){
 document.getElementById("intro").classList.add("hidden");
 document.getElementById("music").play();
 },{once:true});
 
 /* Scroll reveal */
-const sections=document.querySelectorAll("section");
 window.addEventListener("scroll",()=>{
-sections.forEach(sec=>{
-const top=sec.getBoundingClientRect().top;
-if(top<window.innerHeight-100){
+document.querySelectorAll("section").forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight-100){
 sec.classList.add("show");
 }
 });
 });
 
-/* Move No */
+/* Move no */
 function moveNo(){
 let btn=document.getElementById("no");
 btn.style.position="absolute";
@@ -244,11 +210,48 @@ btn.style.left=Math.random()*70+"%";
 btn.style.top=Math.random()*50+"%";
 }
 
-/* Yes redirect */
+/* Yes */
 function goYes(){
 window.location.href="yes.html";
 }
+
+/* Countdown to Feb 14 */
+const countdown=document.createElement("div");
+countdown.className="countdown";
+document.body.appendChild(countdown);
+
+function updateCountdown(){
+const target=new Date("February 14, 2026 00:00:00").getTime();
+const now=new Date().getTime();
+const diff=target-now;
+if(diff>0){
+const days=Math.floor(diff/(1000*60*60*24));
+countdown.innerHTML="Counting down to our day: "+days+" days left ❤️";
+}
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
 </script>
+
+<section>
+<div class="card">
+<h2>The Universe Brought You</h2>
+<p>
+Among billions of people, somehow our paths crossed.  
+That cannot be coincidence.  
+That is destiny.
+</p>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>One Question That Matters</h2>
+<p>Will you be my Valentine?</p>
+<button class="yes" onclick="goYes()">YES ❤️</button>
+<button id="no" onclick="moveNo()">No 😅</button>
+</div>
+</section>
 
 </body>
 </html>
