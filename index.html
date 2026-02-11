@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Shalini ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap');
 
 *{
 margin:0;
@@ -16,10 +16,33 @@ scroll-behavior:smooth;
 }
 
 body{
-background: radial-gradient(circle at top, #1a001f, #000);
+background:black;
 color:white;
-font-family:'Poppins', sans-serif;
+font-family:'Poppins',sans-serif;
 overflow-x:hidden;
+}
+
+/* Star Background */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:transparent;
+overflow:hidden;
+z-index:-1;
+}
+
+.stars span{
+position:absolute;
+background:white;
+width:2px;
+height:2px;
+animation:twinkle 4s infinite ease-in-out alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.2;}
+to{opacity:1;}
 }
 
 section{
@@ -29,52 +52,45 @@ justify-content:center;
 align-items:center;
 padding:40px 20px;
 text-align:center;
-position:relative;
 }
 
 .card{
-background: rgba(255,255,255,0.07);
-backdrop-filter: blur(20px);
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(18px);
 padding:50px 30px;
 border-radius:25px;
 max-width:800px;
 width:95%;
-box-shadow:0 30px 80px rgba(0,0,0,0.6);
+box-shadow:0 0 60px rgba(255,0,80,0.3);
 }
 
 h1{
-font-family:'Playfair Display', serif;
-font-size:3rem;
+font-family:'Playfair Display',serif;
+font-size:3.5rem;
 margin-bottom:20px;
-letter-spacing:2px;
 }
 
 h2{
-font-family:'Playfair Display', serif;
+font-family:'Playfair Display',serif;
 font-size:2.2rem;
 margin-bottom:20px;
 }
 
 p{
 font-size:1.1rem;
-line-height:1.9;
+line-height:1.8;
 opacity:0.9;
 }
 
-.hero{
-background: radial-gradient(circle at center, #300030, #000);
-}
-
 #name{
-font-size:4rem;
 opacity:0;
-transform:scale(0.5);
+transform:translateY(50px);
 transition:2s ease;
 }
 
 #name.show{
 opacity:1;
-transform:scale(1);
+transform:translateY(0);
 }
 
 .gallery{
@@ -90,7 +106,7 @@ width:220px;
 height:320px;
 object-fit:cover;
 border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.6);
+box-shadow:0 15px 40px rgba(0,0,0,0.6);
 transition:0.5s;
 }
 
@@ -123,55 +139,38 @@ background:white;
 color:#ff0055;
 position:relative;
 }
-
-.final-message{
-display:none;
-margin-top:30px;
-font-size:1.4rem;
-}
-
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:24px;
-animation:float 6s linear forwards;
-}
-
-@keyframes float{
-from{transform:translateY(0);opacity:1;}
-to{transform:translateY(-110vh);opacity:0;}
-}
 </style>
 </head>
 
 <body>
 
+<div class="stars" id="stars"></div>
+
 <audio id="music" loop>
 <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<section class="hero">
+<section>
 <div>
 <h1 id="name">Shalini ❤️</h1>
-<p style="margin-top:20px;font-size:1.2rem;">This story begins with you…</p>
+<p style="margin-top:20px;font-size:1.2rem;">Under this sky full of stars… there is only you.</p>
 </div>
 </section>
 
 <section>
 <div class="card">
-<h2>The Day Everything Changed</h2>
+<h2>The Beginning</h2>
 <p>
-I did not know that one conversation could change my world.  
-But you walked in… and suddenly my ordinary life felt magical.  
-Your smile became my peace.  
-Your laugh became my favorite sound.
+You walked into my life quietly…  
+But your presence became the loudest heartbeat in my world.  
+Since then, everything feels warmer, softer, better.
 </p>
 </div>
 </section>
 
 <section>
 <div class="card">
-<h2>Our Beautiful Moments</h2>
+<h2>Our Moments</h2>
 <div class="gallery">
 <img src="photo1.jpg">
 <img src="photo2.jpg">
@@ -182,33 +181,26 @@ Your laugh became my favorite sound.
 
 <section>
 <div class="card">
-<h2>One Honest Question</h2>
-<p style="margin-bottom:20px;">
-So tell me…  
-Will you be mine this Valentine’s Day?
-</p>
+<h2>One Question</h2>
+<p>Will you be my Valentine?</p>
 
-<button class="yes" onclick="sayYes()">YES ❤️</button>
+<button class="yes" onclick="goYes()">YES ❤️</button>
 <button id="no" onclick="moveNo()">No 😅</button>
-
-<div class="final-message" id="final">
-You just made me the happiest person alive.  
-Forever yours,  
-Sanjeev ❤️
-</div>
-
 </div>
 </section>
 
 <script>
-document.addEventListener("click", function(){
+/* Play music on first click */
+document.addEventListener("click",function(){
 document.getElementById("music").play();
 },{once:true});
 
+/* Name reveal */
 setTimeout(()=>{
 document.getElementById("name").classList.add("show");
 },500);
 
+/* Moving no button */
 function moveNo(){
 let btn=document.getElementById("no");
 btn.style.position="absolute";
@@ -216,21 +208,19 @@ btn.style.left=Math.random()*70+"%";
 btn.style.top=Math.random()*50+"%";
 }
 
-function sayYes(){
-document.getElementById("final").style.display="block";
-for(let i=0;i<40;i++){
-createHeart();
-}
+/* Go to yes page */
+function goYes(){
+window.location.href="yes.html";
 }
 
-function createHeart(){
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(3+Math.random()*3)+"s";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
+/* Generate stars */
+let stars=document.getElementById("stars");
+for(let i=0;i<120;i++){
+let star=document.createElement("span");
+star.style.top=Math.random()*100+"vh";
+star.style.left=Math.random()*100+"vw";
+star.style.animationDuration=(2+Math.random()*3)+"s";
+stars.appendChild(star);
 }
 </script>
 
