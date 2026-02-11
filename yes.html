@@ -10,7 +10,7 @@
 
 body{
 margin:0;
-background:black;
+background: radial-gradient(circle at center,#3a003a,#000);
 color:white;
 display:flex;
 justify-content:center;
@@ -23,12 +23,17 @@ overflow:hidden;
 
 .card{
 background:rgba(255,255,255,0.08);
-backdrop-filter:blur(20px);
+backdrop-filter:blur(25px);
 padding:60px 40px;
-border-radius:30px;
-max-width:600px;
-box-shadow:0 0 80px rgba(255,0,90,0.4);
-animation:zoomIn 2s ease forwards;
+border-radius:40px;
+max-width:650px;
+box-shadow:0 0 100px rgba(255,77,166,0.5);
+animation:zoom 2s ease forwards;
+}
+
+@keyframes zoom{
+from{opacity:0;transform:scale(0.6);}
+to{opacity:1;transform:scale(1);}
 }
 
 h1{
@@ -39,58 +44,55 @@ margin-bottom:20px;
 
 p{
 font-size:1.2rem;
-line-height:1.8;
+line-height:1.9;
 }
 
-@keyframes zoomIn{
-from{opacity:0;transform:scale(0.7);}
-to{opacity:1;transform:scale(1);}
-}
-
-.heart{
+.fire{
 position:fixed;
-bottom:-20px;
-font-size:24px;
-animation:float 6s linear forwards;
+width:6px;
+height:6px;
+border-radius:50%;
+background:#ff4da6;
+animation:explode 1s ease-out forwards;
 }
 
-@keyframes float{
-from{transform:translateY(0);opacity:1;}
-to{transform:translateY(-110vh);opacity:0;}
+@keyframes explode{
+from{transform:scale(1);opacity:1;}
+to{transform:scale(8);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<audio id="music" autoplay loop>
+<audio autoplay loop>
 <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card">
 <h1>You Said Yes ❤️</h1>
 <p>
-This is not just a yes.  
-This is the start of forever.  
-I promise to stand by you, choose you, love you.  
-Every single day.  
+This is not just love.  
+This is destiny choosing us.  
+I promise forever.  
 Forever yours,  
 Sanjeev ❤️
 </p>
 </div>
 
 <script>
-for(let i=0;i<70;i++){
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(3+Math.random()*3)+"s";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
+function firework(){
+for(let i=0;i<20;i++){
+let f=document.createElement("div");
+f.className="fire";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),1000);
 }
+}
+setInterval(firework,800);
 </script>
 
 </body>
 </html>
-
