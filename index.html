@@ -13,13 +13,43 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 scroll-behavior:smooth;
+cursor:none;
 }
 
 body{
-background:black;
+background: radial-gradient(circle at top, #3a003a, #120012, #000000);
 color:white;
 font-family:'Poppins',sans-serif;
 overflow-x:hidden;
+}
+
+/* Custom Romantic Cursor */
+.cursor{
+position:fixed;
+width:15px;
+height:15px;
+border-radius:50%;
+background:#ff4da6;
+pointer-events:none;
+box-shadow:0 0 20px #ff4da6, 0 0 40px #ff4da6;
+z-index:2000;
+transform:translate(-50%,-50%);
+}
+
+/* Floating particles */
+.particle{
+position:fixed;
+width:3px;
+height:3px;
+background:#ff99cc;
+border-radius:50%;
+opacity:0.6;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);opacity:0;}
+to{transform:translateY(-10vh);opacity:1;}
 }
 
 /* Intro */
@@ -27,7 +57,7 @@ overflow-x:hidden;
 position:fixed;
 width:100%;
 height:100vh;
-background:radial-gradient(circle at center,#250025,#000);
+background: radial-gradient(circle at center,#4b004b,#000);
 display:flex;
 justify-content:center;
 align-items:center;
@@ -38,49 +68,18 @@ transition:1.5s ease;
 
 #intro h1{
 font-family:'Playfair Display',serif;
-font-size:3rem;
-letter-spacing:3px;
+font-size:3.2rem;
 animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-from{text-shadow:0 0 10px #ff0055;}
-to{text-shadow:0 0 30px #ff0055;}
+from{text-shadow:0 0 10px #ff4da6;}
+to{text-shadow:0 0 40px #ff4da6;}
 }
 
 .hidden{
 opacity:0;
 visibility:hidden;
-}
-
-/* Stars */
-.star{
-position:fixed;
-width:2px;
-height:2px;
-background:white;
-opacity:0.8;
-animation:twinkle 3s infinite alternate;
-}
-
-@keyframes twinkle{
-from{opacity:0.2;}
-to{opacity:1;}
-}
-
-/* Shooting Star */
-.shoot{
-position:fixed;
-width:2px;
-height:80px;
-background:linear-gradient(white,transparent);
-transform:rotate(45deg);
-animation:shoot 2s linear forwards;
-}
-
-@keyframes shoot{
-from{top:-100px;left:0;opacity:1;}
-to{top:100vh;left:100vw;opacity:0;}
 }
 
 /* Sections */
@@ -103,35 +102,29 @@ transform:translateY(0);
 
 .card{
 background:rgba(255,255,255,0.08);
-backdrop-filter:blur(20px);
+backdrop-filter:blur(25px);
 padding:50px 30px;
-border-radius:30px;
+border-radius:35px;
 max-width:850px;
 width:95%;
-box-shadow:0 0 60px rgba(255,0,90,0.3);
+box-shadow:0 0 80px rgba(255,77,166,0.4);
 }
 
 h2{
 font-family:'Playfair Display',serif;
-font-size:2.2rem;
+font-size:2.3rem;
 margin-bottom:20px;
 }
 
 p{
-font-size:1.1rem;
+font-size:1.15rem;
 line-height:1.9;
 }
 
-.countdown{
-margin-top:20px;
-font-size:1.2rem;
-color:#ff4d88;
-}
-
 button{
-padding:15px 40px;
+padding:15px 45px;
 border:none;
-border-radius:40px;
+border-radius:50px;
 font-size:1rem;
 cursor:pointer;
 margin:15px;
@@ -139,9 +132,9 @@ transition:0.3s;
 }
 
 .yes{
-background:#ff0055;
+background:linear-gradient(45deg,#ff4da6,#ff0066);
 color:white;
-box-shadow:0 0 25px #ff0055;
+box-shadow:0 0 30px #ff4da6;
 }
 
 .yes:hover{
@@ -150,7 +143,7 @@ transform:scale(1.1);
 
 #no{
 background:white;
-color:#ff0055;
+color:#ff0066;
 position:relative;
 }
 </style>
@@ -158,9 +151,11 @@ position:relative;
 
 <body>
 
+<div class="cursor" id="cursor"></div>
+
 <div id="intro">
 <h1>Shalini ❤️</h1>
-<p>Tap to enter our universe</p>
+<p>Tap to enter our world</p>
 </div>
 
 <audio id="music" loop>
@@ -169,23 +164,21 @@ position:relative;
 
 <script>
 
-/* Stars */
-for(let i=0;i<150;i++){
-let star=document.createElement("div");
-star.className="star";
-star.style.top=Math.random()*100+"vh";
-star.style.left=Math.random()*100+"vw";
-star.style.animationDuration=(2+Math.random()*3)+"s";
-document.body.appendChild(star);
-}
+/* Romantic cursor */
+const cursor=document.getElementById("cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
 
-/* Shooting star every few seconds */
-setInterval(()=>{
-let shoot=document.createElement("div");
-shoot.className="shoot";
-document.body.appendChild(shoot);
-setTimeout(()=>shoot.remove(),2000);
-},4000);
+/* Particles */
+for(let i=0;i<80;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(6+Math.random()*6)+"s";
+document.body.appendChild(p);
+}
 
 /* Intro click */
 document.addEventListener("click",function(){
@@ -210,43 +203,26 @@ btn.style.left=Math.random()*70+"%";
 btn.style.top=Math.random()*50+"%";
 }
 
-/* Yes */
+/* Yes redirect */
 function goYes(){
 window.location.href="yes.html";
 }
-
-/* Countdown to Feb 14 */
-const countdown=document.createElement("div");
-countdown.className="countdown";
-document.body.appendChild(countdown);
-
-function updateCountdown(){
-const target=new Date("February 14, 2026 00:00:00").getTime();
-const now=new Date().getTime();
-const diff=target-now;
-if(diff>0){
-const days=Math.floor(diff/(1000*60*60*24));
-countdown.innerHTML="Counting down to our day: "+days+" days left ❤️";
-}
-}
-setInterval(updateCountdown,1000);
-updateCountdown();
 </script>
 
 <section>
 <div class="card">
-<h2>The Universe Brought You</h2>
+<h2>You Changed My World</h2>
 <p>
-Among billions of people, somehow our paths crossed.  
-That cannot be coincidence.  
-That is destiny.
+Before you, love was just a word.  
+After you, it became a feeling I breathe every day.  
+You are my calm, my chaos, my forever.
 </p>
 </div>
 </section>
 
 <section>
 <div class="card">
-<h2>One Question That Matters</h2>
+<h2>One Question From My Heart</h2>
 <p>Will you be my Valentine?</p>
 <button class="yes" onclick="goYes()">YES ❤️</button>
 <button id="no" onclick="moveNo()">No 😅</button>
